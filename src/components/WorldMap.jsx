@@ -1,6 +1,7 @@
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
-const WorldMap = ({ hoveredCountry, setHoveredCountry }) => {
+const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClickedCountries }) => {
+
   const geoUrl = 'world.json';
   const selectedCountries = [
     'Sweden',
@@ -11,6 +12,17 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry }) => {
     'China',
     'United Kingdom',
   ];
+
+  const handleCountryClick = (geo) => {
+    const countryName = geo.properties.name;
+    if (clickedCountries.includes(countryName)) {
+      setClickedCountries(
+        clickedCountries.filter((name) => name !== countryName)
+      );
+    } else {
+      setClickedCountries([...clickedCountries, countryName]);
+    }
+  };
 
   return (
     <div className='w-full max-w-[800px] order-1 lg:order-2 flex items-center'>
@@ -39,7 +51,11 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry }) => {
                   strokeWidth={0.5}
                   style={{
                     default: {
-                      fill: isCountrySelected ? '#3498eb' : '#ccc',
+                      fill: clickedCountries.includes(geo.properties.name)
+                        ? '#5934eb' // Dark blue if country is clicked
+                        : isCountrySelected
+                        ? '#3498eb' // Blue if country is in selectedCountries array
+                        : '#ccc', // Gray for all other countries
                       outline: 'none',
                     },
                     hover: {
@@ -51,6 +67,11 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry }) => {
                       fill: isCountrySelected ? '#5934eb' : '#ccc',
                       outline: 'none',
                     },
+                  }}
+                  onClick={() => {
+                    if (isCountrySelected) {
+                      handleCountryClick(geo);
+                    }
                   }}
                   onMouseEnter={() => {
                     if (isCountrySelected) {

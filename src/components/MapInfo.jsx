@@ -1,92 +1,96 @@
-import { useEffect } from 'react';
+const countryData = {
+  Sweden: {
+    members: 14,
+    merchants: 5500,
+    sales: 300,
+    transactions: 2500,
+    savings: 300,
+    countries: 1,
+  },
+  'United Kingdom': {
+    members: 15,
+    merchants: 6000,
+    sales: 400,
+    transactions: 3000,
+    savings: 400,
+    countries: 1,
+  },
+  'United States of America': {
+    members: 20,
+    merchants: 7500,
+    sales: 500,
+    transactions: 4000,
+    savings: 500,
+    countries: 1,
+  },
+  Germany: {
+    members: 12,
+    merchants: 5000,
+    sales: 250,
+    transactions: 2000,
+    savings: 250,
+    countries: 1,
+  },
+  Italy: {
+    members: 8,
+    merchants: 3000,
+    sales: 150,
+    transactions: 1000,
+    savings: 150,
+    countries: 1,
+  },
+  China: {
+    members: 30,
+    merchants: 10000,
+    sales: 1000,
+    transactions: 5000,
+    savings: 1000,
+    countries: 1,
+  },
+  France: {
+    members: 24,
+    merchants: 6000,
+    sales: 3000,
+    transactions: 3000,
+    savings: 2000,
+    countries: 1,
+  },
+  default: {
+    members: 100,
+    merchants: 20000,
+    sales: 20000,
+    transactions: 20000,
+    savings: 20000,
+    countries: '40',
+  },
+};
 
+const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
+  const totalInfo = clickedCountries.reduce(
+    (acc, curr) => {
+      const countryInfo = countryData[curr] || countryData.default;
+      return {
+        members: acc.members + countryInfo.members,
+        merchants: acc.merchants + countryInfo.merchants,
+        sales: acc.sales + countryInfo.sales,
+        transactions: acc.transactions + countryInfo.transactions,
+        savings: acc.savings + countryInfo.savings,
+        countries: acc.countries + countryInfo.countries,
+      };
+    },
+    {
+      members: 0,
+      merchants: 0,
+      sales: 0,
+      transactions: 0,
+      savings: 0,
+      countries: 0,
+    }
+  );
 
-const MapInfo = ({ hoveredCountry }) => {
-  let info = null;
-
-  switch (hoveredCountry) {
-    // Define the information for each hovered country
-    case 'Sweden':
-      info = {
-        members: '14 million',
-        merchants: 'Over 5,500',
-        sales: '£300+',
-        transactions: '2,500+',
-        savings: '£300+',
-        countries: '13',
-      };
-      break;
-    case 'United Kingdom':
-      info = {
-        members: '15 million',
-        merchants: '6,000',
-        sales: '£400+',
-        transactions: '3,000+',
-        savings: '£400+',
-        countries: '14',
-      };
-      break;
-    case 'United States of America':
-      info = {
-        members: '20 million',
-        merchants: '7,500',
-        sales: '£500+',
-        transactions: '4,000+',
-        savings: '£500+',
-        countries: '20',
-      };
-      break;
-    case 'Germany':
-      info = {
-        members: '12 million',
-        merchants: '5,000',
-        sales: '£250+',
-        transactions: '2,000+',
-        savings: '£250+',
-        countries: '10',
-      };
-      break;
-    case 'Italy':
-      info = {
-        members: '8 million',
-        merchants: '3,000',
-        sales: '£150+',
-        transactions: '1,000+',
-        savings: '£150+',
-        countries: '8',
-      };
-      break;
-    case 'China':
-      info = {
-        members: '30 million',
-        merchants: '10,000',
-        sales: '£1,000+',
-        transactions: '5,000+',
-        savings: '£1,000+',
-        countries: '30',
-      };
-      break;
-    case 'France':
-      info = {
-        members: '24 million',
-        merchants: '6,000',
-        sales: '£3,000+',
-        transactions: '3,000+',
-        savings: '£2,000+',
-        countries: '40',
-      };
-      break;
-    default:
-      // Set default information for total
-      info = {
-        members: '100 million',
-        merchants: '20,000',
-        sales: '£20,000+',
-        transactions: '20,000+',
-        savings: '£20,000+',
-        countries: '40',
-      };
-  }
+  const info = hoveredCountry
+    ? countryData[hoveredCountry] || countryData.default
+    : totalInfo;
 
   return (
     <div className='order-2 lg:order-1 mx-6'>
@@ -96,7 +100,7 @@ const MapInfo = ({ hoveredCountry }) => {
       <div className='grid grid-cols-2 gap-6'>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.members}</p>
+          <p className='text-lg'>{info?.members} million</p>
           <p className='text-center'>Registered members on</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
