@@ -47,6 +47,7 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
+                  className='map-geography'
                   stroke='#fff'
                   strokeWidth={0.5}
                   style={{
@@ -60,10 +61,9 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                     },
                     hover: {
                       fill: isCountrySelected
-                        ? (clickedCountries.includes(geo.properties.name)
+                        ? clickedCountries.includes(geo.properties.name)
                           ? '#5934eb' // Dark blue if country is clicked
                           : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
-                        )
                         : '#ccc',
                       cursor: 'pointer',
                       outline: 'none',

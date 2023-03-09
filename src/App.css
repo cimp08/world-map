@@ -1,0 +1,6 @@
+@media (max-width: 640px) {
+  .map-geography:hover {
+    fill: inherit !important;
+    cursor: default !important;
+  }
+}

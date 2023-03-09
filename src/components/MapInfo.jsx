@@ -107,7 +107,7 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
           </>
         )}
       </h3>
-      <div className='grid grid-cols-2 gap-6'>
+      <div className='grid grid-cols-2 gap-2 md:gap-6'>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
           <p className='text-lg'>{totalInfo?.members} million</p>
