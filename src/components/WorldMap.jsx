@@ -1,7 +1,13 @@
 import { useEffect, useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
-const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClickedCountries }) => {
+const WorldMap = ({
+  hoveredCountry,
+  setHoveredCountry,
+  clickedCountries,
+  setClickedCountries,
+}) => {
+  const [isSmallScreen, setIsSmallScreen] = useState(false);
 
   const geoUrl = 'world.json';
   const selectedCountries = [
@@ -14,7 +20,6 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
     'United Kingdom',
   ];
 
-
   const handleCountryClick = (geo) => {
     const countryName = geo.properties.name;
     if (clickedCountries.includes(countryName)) {
@@ -25,6 +30,15 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
       setClickedCountries([...clickedCountries, countryName]);
     }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsSmallScreen(window.innerWidth < 768); // Change the threshold value to your desired screen width
+    };
+    handleResize();
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   return (
     <div className='order-first lg:order-last w-full lg:max-w-[1000px] flex items-center'>
@@ -61,20 +75,16 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                       outline: 'none',
                     },
                     hover: {
-                      fill: isCountrySelected
-                        ? clickedCountries.includes(geo.properties.name)
-                          ? '#5934eb' // Dark blue if country is clicked
-                          : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
-                        : '#ccc',
-                      cursor: isCountrySelected ? 'pointer' : 'default',
-                      outline: 'none',
-                    },
-                    focus: {
-                      fill: isCountrySelected
-                        ? clickedCountries.includes(geo.properties.name)
-                          ? '#5934eb' // Dark blue if country is clicked
-                          : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
-                        : '#ccc',
+                      fill:
+                        isCountrySelected && !isSmallScreen // Disable hover effect on small screens
+                          ? clickedCountries.includes(geo.properties.name)
+                            ? '#5934eb' // Dark blue if country is clicked
+                            : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
+                          : isCountrySelected
+                          ? clickedCountries.includes(geo.properties.name)
+                            ? '#5934eb'
+                            : '#3498eb'
+                          : '#ccc', // Gray for all other countries
                       cursor: isCountrySelected ? 'pointer' : 'default',
                       outline: 'none',
                     },
