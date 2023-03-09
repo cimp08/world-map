@@ -89,7 +89,7 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
   );
 
   return (
-    <div className='w-full lg:w-[500px] order-last lg:order-first mx-6'>
+    <div className='w-full lg:w-[500px] order-last lg:order-first'>
       <h3 className='text-center text-2xl mb-5'>
         {clickedCountries.length > 0 ? (
           <>
