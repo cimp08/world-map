@@ -1,16 +1,18 @@
-import { geoPatterson } from 'd3-geo-projection';
-import React from 'react';
-import {
-  ComposableMap,
-  Geographies,
-  Geography,
-  Marker,
-} from 'react-simple-maps';
+import { useState } from 'react';
+import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 const Map = () => {
+  const [hoveredCountry, setHoveredCountry] = useState('');
   const geoUrl = 'world.json';
-  const width = 760;
-  const height = 570;
+  const selectedCountries = [
+    'Sweden',
+    'France',
+    'Italy',
+    'Germany',
+    'United States of America',
+    'China',
+    'United Kingdom',
+  ];
 
   return (
     <div>
@@ -20,88 +22,56 @@ const Map = () => {
           center: [0, 30],
           scale: 120,
         }}
-        width={width}
-        height={height}
+        width={980}
+        height={551}
+        style={{
+          width: '100%',
+          height: 'auto',
+        }}
       >
         <Geographies geography={geoUrl}>
           {({ geographies }) =>
-            geographies.map((geo) => (
-              <Geography
-                key={geo.rsmKey}
-                geography={geo}
-                stroke='#fff'
-                strokeWidth={0.5}
-                style={{
-                  default: {
-                    fill: '#3498eb',
-                  },
-                  hover: {
-                    fill: '#F53',
-                  },
-                  pressed: {
-                    fill: '#E42',
-                  },
-                }}
-              />
-            ))
+            geographies.map((geo) => {
+              const isCountrySelected = selectedCountries.includes(
+                geo.properties.name
+              );
+
+              return (
+                <Geography
+                  key={geo.rsmKey}
+                  geography={geo}
+                  stroke='#fff'
+                  strokeWidth={0.5}
+                  style={{
+                    default: {
+                      fill: isCountrySelected ? '#3498eb' : '#ccc',
+                      outline: 'none',
+                    },
+                    hover: {
+                      fill: isCountrySelected ? '#5934eb' : '#ccc',
+                      cursor: isCountrySelected ? 'pointer' : 'default',
+                      outline: 'none',
+                    },
+                    pressed: {
+                      fill: isCountrySelected ? '#5934eb' : '#ccc',
+                      outline: 'none',
+                    },
+                  }}
+                  onMouseEnter={() => {
+                    if (isCountrySelected) {
+                      setHoveredCountry(geo.properties.name);
+                    }
+                  }}
+                  onMouseLeave={() => {
+                    setHoveredCountry('');
+                  }}
+                />
+              );
+            })
           }
         </Geographies>
-        {/* USA */}
-        <Marker coordinates={[-95.844032, 36.966428]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-15, -15)'
-          />
-        </Marker>
-        {/* United Kingdom */}
-        <Marker coordinates={[-0.118092, 51.509865]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-10, -10)'
-          />
-
-          {/* Sweden */}
-        </Marker>
-        <Marker coordinates={[18.643501, 60.128161]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-15, -15)'
-          />
-        </Marker>
-        {/* Germany */}
-        <Marker coordinates={[13.404954, 52.520008]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-15, -15)'
-          />
-          {/* France */}
-        </Marker>
-        <Marker coordinates={[2.213749, 46.227638]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-15, -15)'
-          />
-        </Marker>
-        {/* China */}
-        <Marker coordinates={[116.383331, 39.916668]}>
-          <image
-            href='refunder-logo.png'
-            width='25'
-            height='25'
-            transform='translate(-15, -15)'
-          />
-        </Marker>
       </ComposableMap>
+      {hoveredCountry && <p>{hoveredCountry}</p>}
     </div>
   );
 };
