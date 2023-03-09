@@ -95,7 +95,10 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
           `Refunder ${clickedCountries}`
         ) : (
           <>
-            Refunder Total <span className="text-base block">({clickedCountries.join(', ')})</span>
+            Refunder Total{' '}
+            <span className='text-base block'>
+              ({clickedCountries.join(', ')})
+            </span>
           </>
         )}
       </h3>
@@ -107,24 +110,28 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{totalInfo?.merchants}</p>
+          <p className='text-lg'>
+            {totalInfo?.merchants.toLocaleString('en-US')}
+          </p>
           <p className='text-center'>Merchants onsite</p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{totalInfo?.sales}</p>
+          <p className='text-lg'>£{totalInfo?.sales}+</p>
           <p className='text-center'>Total generated sales</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{totalInfo?.transactions}</p>
+          <p className='text-lg'>
+            {totalInfo?.transactions.toLocaleString('en-US')}
+          </p>
           <p className='text-center'>Transactions per hour</p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{totalInfo?.savings}</p>
+          <p className='text-lg'>£{totalInfo?.savings}+</p>
           <p className='text-center'>Avarage saving of members</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
