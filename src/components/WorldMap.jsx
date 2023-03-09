@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClickedCountries }) => {
-  const [isHoverEnabled, setIsHoverEnabled] = useState(true);
 
   const geoUrl = 'world.json';
   const selectedCountries = [
@@ -15,21 +14,6 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
     'United Kingdom',
   ];
 
-  useEffect(() => {
-    // Disable hover effects on small devices
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsHoverEnabled(false);
-      } else {
-        setIsHoverEnabled(true);
-      }
-    };
-    handleResize();
-    window.addEventListener('resize', handleResize);
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
 
   const handleCountryClick = (geo) => {
     const countryName = geo.properties.name;
@@ -65,7 +49,6 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                 <Geography
                   key={geo.rsmKey}
                   geography={geo}
-                  className='map-geography'
                   stroke='#fff'
                   strokeWidth={0.5}
                   style={{
@@ -78,12 +61,20 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                       outline: 'none',
                     },
                     hover: {
-                      fill:
-                        isCountrySelected && isHoverEnabled
-                          ? clickedCountries.includes(geo.properties.name)
-                            ? '#5934eb' // Dark blue if country is clicked
-                            : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
-                          : '#ccc',
+                      fill: isCountrySelected
+                        ? clickedCountries.includes(geo.properties.name)
+                          ? '#5934eb' // Dark blue if country is clicked
+                          : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
+                        : '#ccc',
+                      cursor: isCountrySelected ? 'pointer' : 'default',
+                      outline: 'none',
+                    },
+                    focus: {
+                      fill: isCountrySelected
+                        ? clickedCountries.includes(geo.properties.name)
+                          ? '#5934eb' // Dark blue if country is clicked
+                          : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
+                        : '#ccc',
                       cursor: isCountrySelected ? 'pointer' : 'default',
                       outline: 'none',
                     },
