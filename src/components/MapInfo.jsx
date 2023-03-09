@@ -92,7 +92,12 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
     <div className='w-[500px] order-last lg:order-first mx-6'>
       <h3 className='text-center text-2xl mb-5'>
         {clickedCountries.length === 1 ? (
-          `Refunder ${clickedCountries}`
+          <>
+            Refunder
+            <span className='text-base block'>
+              ({clickedCountries.join(', ')})
+            </span>
+          </>
         ) : (
           <>
             Refunder Total{' '}
