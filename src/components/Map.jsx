@@ -13,13 +13,11 @@ const Map = () => {
         </div>
       </div>
       <div className='flex flex-col lg:flex-row items-center justify-center'>
-        <div className={`${clickedCountries.length === 0 ? 'hidden' : ''}`}>
           <MapInfo
             hoveredCountry={hoveredCountry}
             clickedCountries={clickedCountries}
             setClickedCountries={setClickedCountries}
           />
-        </div>
         <WorldMap
           hoveredCountry={hoveredCountry}
           setHoveredCountry={setHoveredCountry}
