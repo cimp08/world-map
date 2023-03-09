@@ -89,7 +89,7 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
   );
 
   return (
-    <div className='w-[500px] order-last lg:order-first mx-6'>
+    <div className='w-full lg:w-[500px] order-last lg:order-first mx-6'>
       <h3 className='text-center text-2xl mb-5'>
         {clickedCountries.length > 0 ? (
           <>
@@ -107,7 +107,7 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
           </>
         )}
       </h3>
-      <div className='grid grid-cols-2 gap-2 md:gap-6'>
+      <div className='grid gap-4 grid-cols-2'>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
           <p className='text-lg'>
@@ -151,7 +151,9 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{totalInfo?.countries === 0 ? "-" : `${totalInfo?.countries}` }</p>
+          <p className='text-lg'>
+            {totalInfo?.countries === 0 ? '-' : `${totalInfo?.countries}`}
+          </p>
           <p className='text-center'>TopCashback countries</p>
         </div>
       </div>

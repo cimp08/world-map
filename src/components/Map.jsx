@@ -12,7 +12,7 @@ const Map = () => {
           <h2 className='text-4xl text-white py-6'>Refunder in Numbers</h2>
         </div>
       </div>
-      <div className='flex flex-col lg:flex-row items-center justify-center'>
+      <div className='flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-center'>
           <MapInfo
             hoveredCountry={hoveredCountry}
             clickedCountries={clickedCountries}
