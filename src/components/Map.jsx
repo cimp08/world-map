@@ -1,77 +1,24 @@
 import { useState } from 'react';
-import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
+import MapInfo from './MapInfo';
+import WorldMap from './WorldMap';
+
 
 const Map = () => {
-  const [hoveredCountry, setHoveredCountry] = useState('');
-  const geoUrl = 'world.json';
-  const selectedCountries = [
-    'Sweden',
-    'France',
-    'Italy',
-    'Germany',
-    'United States of America',
-    'China',
-    'United Kingdom',
-  ];
-
+  const [hoveredCountry, setHoveredCountry] = useState('Sweden');
   return (
     <div>
-      <ComposableMap
-        projection='geoMercator'
-        projectionConfig={{
-          center: [0, 30],
-          scale: 120,
-        }}
-        width={980}
-        height={551}
-        style={{
-          width: '100%',
-          height: 'auto',
-        }}
-      >
-        <Geographies geography={geoUrl}>
-          {({ geographies }) =>
-            geographies.map((geo) => {
-              const isCountrySelected = selectedCountries.includes(
-                geo.properties.name
-              );
-
-              return (
-                <Geography
-                  key={geo.rsmKey}
-                  geography={geo}
-                  stroke='#fff'
-                  strokeWidth={0.5}
-                  style={{
-                    default: {
-                      fill: isCountrySelected ? '#3498eb' : '#ccc',
-                      outline: 'none',
-                    },
-                    hover: {
-                      fill: isCountrySelected ? '#5934eb' : '#ccc',
-                      cursor: isCountrySelected ? 'pointer' : 'default',
-                      outline: 'none',
-                    },
-                    pressed: {
-                      fill: isCountrySelected ? '#5934eb' : '#ccc',
-                      outline: 'none',
-                    },
-                  }}
-                  onMouseEnter={() => {
-                    if (isCountrySelected) {
-                      setHoveredCountry(geo.properties.name);
-                    }
-                  }}
-                  onMouseLeave={() => {
-                    setHoveredCountry('');
-                  }}
-                />
-              );
-            })
-          }
-        </Geographies>
-      </ComposableMap>
-      {hoveredCountry && <p>{hoveredCountry}</p>}
+      <div className='bg-blue-400'>
+        <div className='container mx-auto'>
+          <h2 className="text-4xl text-white py-6">Refunder in Numbers</h2>
+        </div>
+      </div>
+      <div className='container mx-auto flex flex-col lg:flex-row items-center justify-center mt-20'>
+        <MapInfo hoveredCountry={hoveredCountry} />
+        <WorldMap
+          hoveredCountry={hoveredCountry}
+          setHoveredCountry={setHoveredCountry}
+        />
+      </div>
     </div>
   );
 };
