@@ -2,10 +2,9 @@ import { useState } from 'react';
 import MapInfo from './MapInfo';
 import WorldMap from './WorldMap';
 
-
 const Map = () => {
   const [hoveredCountry, setHoveredCountry] = useState('Sweden');
-  const [clickedCountries, setClickedCountries] = useState([]);
+  const [clickedCountries, setClickedCountries] = useState(['Sweden']);
   return (
     <div>
       <div className='bg-blue-400'>
@@ -13,7 +12,7 @@ const Map = () => {
           <h2 className='text-4xl text-white py-6'>Refunder in Numbers</h2>
         </div>
       </div>
-      <div className='container mx-auto flex flex-col lg:flex-row items-center justify-center mt-20'>
+      <div className='flex flex-col lg:flex-row items-center justify-center'>
         <div className={`${clickedCountries.length === 0 ? 'hidden' : ''}`}>
           <MapInfo
             hoveredCountry={hoveredCountry}

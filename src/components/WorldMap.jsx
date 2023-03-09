@@ -25,7 +25,7 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
   };
 
   return (
-    <div className='w-full max-w-[800px] order-1 lg:order-2 flex items-center'>
+    <div className='order-first lg:order-last w-full lg:max-w-[1000px] flex items-center'>
       <ComposableMap
         projection='geoMercator'
         projectionConfig={{
@@ -59,8 +59,13 @@ const WorldMap = ({ hoveredCountry, setHoveredCountry, clickedCountries, setClic
                       outline: 'none',
                     },
                     hover: {
-                      fill: isCountrySelected ? '#5934eb' : '#ccc',
-                      cursor: isCountrySelected ? 'pointer' : 'default',
+                      fill: isCountrySelected
+                        ? (clickedCountries.includes(geo.properties.name)
+                          ? '#5934eb' // Dark blue if country is clicked
+                          : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
+                        )
+                        : '#ccc',
+                      cursor: 'pointer',
                       outline: 'none',
                     },
                     pressed: {

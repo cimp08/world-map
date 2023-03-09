@@ -88,46 +88,48 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
     }
   );
 
-  const info = hoveredCountry
-    ? countryData[hoveredCountry] || countryData.default
-    : totalInfo;
-
   return (
-    <div className='order-2 lg:order-1 mx-6'>
+    <div className='w-[500px] order-last lg:order-first mx-6'>
       <h3 className='text-center text-2xl mb-5'>
-        {hoveredCountry ? hoveredCountry : 'Refunder Total'}
+        {clickedCountries.length === 1 ? (
+          `Refunder ${clickedCountries}`
+        ) : (
+          <>
+            Refunder Total <span className="text-base block">({clickedCountries.join(', ')})</span>
+          </>
+        )}
       </h3>
       <div className='grid grid-cols-2 gap-6'>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.members} million</p>
+          <p className='text-lg'>{totalInfo?.members} million</p>
           <p className='text-center'>Registered members on</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.merchants}</p>
+          <p className='text-lg'>{totalInfo?.merchants}</p>
           <p className='text-center'>Merchants onsite</p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.sales}</p>
+          <p className='text-lg'>{totalInfo?.sales}</p>
           <p className='text-center'>Total generated sales</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.transactions}</p>
+          <p className='text-lg'>{totalInfo?.transactions}</p>
           <p className='text-center'>Transactions per hour</p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.savings}</p>
+          <p className='text-lg'>{totalInfo?.savings}</p>
           <p className='text-center'>Avarage saving of members</p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>{info?.countries}</p>
+          <p className='text-lg'>{totalInfo?.countries}</p>
           <p className='text-center'>TopCashback countries</p>
         </div>
       </div>
