@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ComposableMap, Geographies, Geography } from 'react-simple-maps';
 
 const WorldMap = ({
-  hoveredCountry,
   setHoveredCountry,
   clickedCountries,
   setClickedCountries,
@@ -44,10 +43,11 @@ const WorldMap = ({
     <div className='order-first lg:order-last w-full lg:max-w-[1000px] flex items-center'>
       <ComposableMap
         projection='geoMercator'
-        projectionConfig={{
-          center: [0, 50],
-          scale: 120,
-        }}
+        projectionConfig={
+          isSmallScreen
+            ? { center: [-16, 50], scale: 145 }
+            : { center: [0, 50], scale: 120 }
+        }
         width={760}
         height={551}
         className='w-full h-auto'

@@ -65,7 +65,7 @@ const countryData = {
   },
 };
 
-const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
+const MapInfo = ({ clickedCountries }) => {
   const totalInfo = clickedCountries.reduce(
     (acc, curr) => {
       const countryInfo = countryData[curr] || countryData.default;
@@ -107,54 +107,66 @@ const MapInfo = ({ hoveredCountry, clickedCountries, setClickedCountries }) => {
           </>
         )}
       </h3>
-      <div className='grid gap-4 grid-cols-2'>
+      <div className='grid gap-4 grid-cols-3 md:grid-cols-2 items-start'>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.members === 0 ? '-' : `${totalInfo?.members} million`}
           </p>
-          <p className='text-center'>Registered members on</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            Registered members on
+          </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.merchants === 0
               ? '-'
               : totalInfo?.merchants.toLocaleString('en-US')}
           </p>
-          <p className='text-center'>Merchants onsite</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            Merchants onsite
+          </p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.sales === 0 ? '-' : `£${totalInfo?.sales}+`}
           </p>
-          <p className='text-center'>Total generated sales</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            Total generated sales
+          </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.transactions === 0
               ? '-'
               : totalInfo?.transactions.toLocaleString('en-US')}
           </p>
-          <p className='text-center'>Transactions per hour</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            Transactions per hour
+          </p>
         </div>
 
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.savings === 0 ? '-' : `£${totalInfo?.savings}+`}
           </p>
-          <p className='text-center'>Avarage saving of members</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            Avarage saving of members
+          </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
           <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
-          <p className='text-lg'>
+          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.countries === 0 ? '-' : `${totalInfo?.countries}`}
           </p>
-          <p className='text-center'>TopCashback countries</p>
+          <p className='text-gray-700 text-sm md:text-base text-center'>
+            TopCashback countries
+          </p>
         </div>
       </div>
     </div>
