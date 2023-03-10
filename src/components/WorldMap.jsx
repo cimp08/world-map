@@ -45,7 +45,7 @@ const WorldMap = ({
         projection='geoMercator'
         projectionConfig={
           isSmallScreen
-            ? { center: [-16, 50], scale: 145 }
+            ? { center: [0, 50], scale: 120 }
             : { center: [0, 50], scale: 120 }
         }
         width={760}

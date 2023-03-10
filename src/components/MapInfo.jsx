@@ -104,7 +104,11 @@ const MapInfo = ({ clickedCountries }) => {
       </h3>
       <div className='grid gap-4 grid-cols-3 md:grid-cols-2 items-start'>
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/people-group-solid.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.members === 0 ? '-' : `${totalInfo?.members} million`}
           </p>
@@ -113,7 +117,11 @@ const MapInfo = ({ clickedCountries }) => {
           </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/shop-solid.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.merchants === 0
               ? '-'
@@ -125,7 +133,11 @@ const MapInfo = ({ clickedCountries }) => {
         </div>
 
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/cash-register-regular.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.sales === 0 ? '-' : `£${totalInfo?.sales}+`}
           </p>
@@ -134,7 +146,11 @@ const MapInfo = ({ clickedCountries }) => {
           </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/clock-rotate-left-solid.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.transactions === 0
               ? '-'
@@ -146,7 +162,11 @@ const MapInfo = ({ clickedCountries }) => {
         </div>
 
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/sack-dollar-solid.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.savings === 0 ? '-' : `£${totalInfo?.savings}+`}
           </p>
@@ -155,7 +175,11 @@ const MapInfo = ({ clickedCountries }) => {
           </p>
         </div>
         <div className='flex flex-col justify-center items-center'>
-          <img src='crowd-of-users.png' alt='people' className='w-[50px]' />
+          <img
+            src='assets/icons/earth-americas-solid.svg'
+            alt='people'
+            className='w-[50px]'
+          />
           <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
             {totalInfo?.countries === 0 ? '-' : `${totalInfo?.countries}`}
           </p>
