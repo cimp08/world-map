@@ -5,7 +5,7 @@ const countryData = {
     sales: 300,
     transactions: 2500,
     savings: 300,
-    countries: 1,
+    flag: '/assets/flags/sweden.png',
   },
   'United Kingdom': {
     members: 15,
@@ -13,7 +13,7 @@ const countryData = {
     sales: 400,
     transactions: 3000,
     savings: 400,
-    countries: 1,
+    flag: '/assets/flags/united-kingdom.png',
   },
   'United States of America': {
     members: 20,
@@ -21,7 +21,7 @@ const countryData = {
     sales: 500,
     transactions: 4000,
     savings: 500,
-    countries: 1,
+    flag: '/assets/flags/usa.png',
   },
   Germany: {
     members: 12,
@@ -29,7 +29,7 @@ const countryData = {
     sales: 250,
     transactions: 2000,
     savings: 250,
-    countries: 1,
+    flag: '/assets/flags/germany.png',
   },
   Italy: {
     members: 8,
@@ -37,7 +37,7 @@ const countryData = {
     sales: 150,
     transactions: 1000,
     savings: 150,
-    countries: 1,
+    flag: '/assets/flags/italy.png',
   },
   China: {
     members: 30,
@@ -45,7 +45,7 @@ const countryData = {
     sales: 1000,
     transactions: 5000,
     savings: 1000,
-    countries: 1,
+    flag: '/assets/flags/china.png',
   },
   France: {
     members: 24,
@@ -53,19 +53,19 @@ const countryData = {
     sales: 3000,
     transactions: 3000,
     savings: 2000,
-    countries: 1,
+    flag: '/assets/flags/france.png',
   },
-  default: {
-    members: 100,
-    merchants: 20000,
-    sales: 20000,
-    transactions: 20000,
-    savings: 20000,
-    countries: '40',
+  Australia: {
+    members: 10,
+    merchants: 3000,
+    sales: 2000,
+    transactions: 1500,
+    savings: 1500,
+    flag: '/assets/flags/australia.png',
   },
 };
 
-const MapInfo = ({ clickedCountries }) => {
+const MapInfo = ({ clickedCountries, handleCountryClick }) => {
   const totalInfo = clickedCountries.reduce(
     (acc, curr) => {
       const countryInfo = countryData[curr] || countryData.default;
@@ -90,26 +90,36 @@ const MapInfo = ({ clickedCountries }) => {
 
   return (
     <div className='w-full lg:w-[500px] order-last lg:order-first'>
-      <h3 className='h-[90px] md:h-[100px] text-center text-[#DA557C] text-4xl md:text-[48px] font-[700] mb-5'>
+      <div className='text-center mb-12'>
         {clickedCountries.length > 0 ? (
-          <>
-            Refunder
-            <span className='text-sm md:text-base text-gray-600 block mt-2'>
-              ({clickedCountries.join(', ')})
-            </span>
-          </>
+          <div>
+            {clickedCountries.map((country) => (
+              <img
+                key={country}
+                src={countryData[country].flag}
+                alt={`${country} flag`}
+                className='inline-block w-10 h-10 mx-1 cursor-pointer'
+                onClick={() => {
+                  console.log(country)
+                  handleCountryClick(country);
+                }}
+              />
+            ))}
+          </div>
         ) : (
-          'Choose Country'
+          <h3 className='text-center text-[#DA557C] text-4xl md:text-[48px] font-[700]'>
+            Choose Country
+          </h3>
         )}
-      </h3>
-      <div className='grid gap-4 grid-cols-3 md:grid-cols-2 items-start'>
+      </div>
+      <div className='grid gap-4 grid-cols-3 md:grid-cols-2 gap-y-6 md:gap-y-8 items-start'>
         <div className='flex flex-col justify-center items-center'>
           <img
             src='assets/icons/people-group-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>
             {totalInfo?.members === 0 ? '-' : `${totalInfo?.members} million`}
           </p>
           <p className='text-gray-700 text-sm md:text-base text-center'>
@@ -120,9 +130,9 @@ const MapInfo = ({ clickedCountries }) => {
           <img
             src='assets/icons/shop-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>
             {totalInfo?.merchants === 0
               ? '-'
               : totalInfo?.merchants.toLocaleString('en-US')}
@@ -136,9 +146,9 @@ const MapInfo = ({ clickedCountries }) => {
           <img
             src='assets/icons/cash-register-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] h-[28px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>
             {totalInfo?.sales === 0 ? '-' : `£${totalInfo?.sales}+`}
           </p>
           <p className='text-gray-700 text-sm md:text-base text-center'>
@@ -149,9 +159,9 @@ const MapInfo = ({ clickedCountries }) => {
           <img
             src='assets/icons/clock-rotate-left-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>
             {totalInfo?.transactions === 0
               ? '-'
               : totalInfo?.transactions.toLocaleString('en-US')}
@@ -165,9 +175,9 @@ const MapInfo = ({ clickedCountries }) => {
           <img
             src='assets/icons/sack-dollar-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>
             {totalInfo?.savings === 0 ? '-' : `£${totalInfo?.savings}+`}
           </p>
           <p className='text-gray-700 text-sm md:text-base text-center'>
@@ -178,11 +188,9 @@ const MapInfo = ({ clickedCountries }) => {
           <img
             src='assets/icons/earth-americas-solid.svg'
             alt='people'
-            className='w-[50px]'
+            className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg mb-1'>
-            {totalInfo?.countries === 0 ? '-' : `${totalInfo?.countries}`}
-          </p>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>8</p>
           <p className='text-gray-700 text-sm md:text-base text-center'>
             TopCashback countries
           </p>

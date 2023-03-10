@@ -5,6 +5,7 @@ const WorldMap = ({
   setHoveredCountry,
   clickedCountries,
   setClickedCountries,
+  handleCountryClick,
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 
@@ -20,16 +21,6 @@ const WorldMap = ({
     'Australia',
   ];
 
-  const handleCountryClick = (geo) => {
-    const countryName = geo.properties.name;
-    if (clickedCountries.includes(countryName)) {
-      setClickedCountries(
-        clickedCountries.filter((name) => name !== countryName)
-      );
-    } else {
-      setClickedCountries([...clickedCountries, countryName]);
-    }
-  };
 
   useEffect(() => {
     const handleResize = () => {
