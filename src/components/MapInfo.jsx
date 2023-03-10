@@ -90,11 +90,11 @@ const MapInfo = ({ clickedCountries }) => {
 
   return (
     <div className='w-full lg:w-[500px] order-last lg:order-first'>
-      <h3 className='text-center text-2xl mb-5'>
+      <h3 className='text-center text-[#DA557C] text-[48px] font-[700] mb-5'>
         {clickedCountries.length > 0 ? (
           <>
             Refunder
-            <span className='text-base block'>
+            <span className='text-base text-gray-600 block'>
               ({clickedCountries.join(', ')})
             </span>
           </>
