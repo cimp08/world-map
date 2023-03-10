@@ -111,7 +111,7 @@ const MapInfo = ({ clickedCountries, handleCountryClick }) => {
                   key={country}
                   src={flagUrl}
                   alt={`${country} flag`}
-                  className={`inline-block w-10 h-10 mx-1 cursor-pointer ${clickedCountries.includes(country) ? 'opacity-100' : 'opacity-25'}`}
+                  className={`inline-block w-8 h-8 md:w-10 md:h-10 mx-1 cursor-pointer ${clickedCountries.includes(country) ? 'opacity-100' : 'opacity-25'}`}
                   onClick={() => {
                     console.log(country);
                     handleCountryClick(country);
