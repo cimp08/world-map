@@ -17,6 +17,7 @@ const WorldMap = ({
     'United States of America',
     'China',
     'United Kingdom',
+    'Australia',
   ];
 
   const handleCountryClick = (geo) => {

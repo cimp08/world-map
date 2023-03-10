@@ -12,6 +12,7 @@ const Map = () => {
     'United States of America',
     'China',
     'United Kingdom',
+    'Australia'
   ]);
   return (
     <>
