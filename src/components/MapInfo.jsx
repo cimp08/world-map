@@ -134,7 +134,7 @@ const MapInfo = ({ clickedCountries }) => {
 
         <div className='flex flex-col justify-center items-center'>
           <img
-            src='assets/icons/cash-register-regular.svg'
+            src='assets/icons/cash-register-solid.svg'
             alt='people'
             className='w-[50px]'
           />
