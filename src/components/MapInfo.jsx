@@ -90,21 +90,16 @@ const MapInfo = ({ clickedCountries }) => {
 
   return (
     <div className='w-full lg:w-[500px] order-last lg:order-first'>
-      <h3 className='text-center text-[#DA557C] text-4xl md:text-[48px] font-[700] mb-5'>
+      <h3 className='h-[90px] md:h-[100px] text-center text-[#DA557C] text-4xl md:text-[48px] font-[700] mb-5'>
         {clickedCountries.length > 0 ? (
           <>
             Refunder
-            <span className='text-base text-gray-600 block mt-2'>
+            <span className='text-sm md:text-base text-gray-600 block mt-2'>
               ({clickedCountries.join(', ')})
             </span>
           </>
         ) : (
-          <>
-            Choose Country
-            <span className='invisible text-base text-gray-600 block mt-2'>
-              No countries added
-            </span>
-          </>
+          'Choose Country'
         )}
       </h3>
       <div className='grid gap-4 grid-cols-3 md:grid-cols-2 items-start'>
