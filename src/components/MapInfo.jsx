@@ -101,7 +101,7 @@ const MapInfo = ({ clickedCountries }) => {
         ) : (
           <>
             Choose Country
-            <span className='invisible text-base block'>
+            <span className='invisible text-base text-gray-600 block mt-2'>
               No countries added
             </span>
           </>
