@@ -4,7 +4,15 @@ import WorldMap from './WorldMap';
 
 const Map = () => {
   const [hoveredCountry, setHoveredCountry] = useState('Sweden');
-  const [clickedCountries, setClickedCountries] = useState(['Sweden']);
+  const [clickedCountries, setClickedCountries] = useState([
+    'Sweden',
+    'France',
+    'Italy',
+    'Germany',
+    'United States of America',
+    'China',
+    'United Kingdom',
+  ]);
   return (
     <>
       <div
@@ -19,10 +27,7 @@ const Map = () => {
           </h2>
         </div>
       </div>
-      <div
-        className='flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-center'
-        style={{ background: 'linear-gradient(140deg,#ffeee0,#ffe8e4)' }}
-      >
+      <div className='flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-center'>
         <div className='mx-2'>
           <MapInfo clickedCountries={clickedCountries} />
         </div>
