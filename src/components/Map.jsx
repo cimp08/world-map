@@ -7,18 +7,24 @@ const Map = () => {
   const [clickedCountries, setClickedCountries] = useState(['Sweden']);
   return (
     <>
-      <div className='bg-blue-400' style={{background: "linear-gradient(130deg,#fd438e,#ffaf60 93%,#ffaf60)"}}>
+      <div
+        className='bg-blue-400'
+        style={{
+          background: 'linear-gradient(130deg,#fd438e,#ffaf60 93%,#ffaf60)',
+        }}
+      >
         <div className='container mx-auto'>
-          <h2 className='text-[48px] font-[700] md:text-4xl text-white py-6 mx-5'>
+          <h2 className='text-2xl font-[700] md:text-[48px] text-white py-6 md:py-10 mx-5'>
             Refunder in Numbers
           </h2>
         </div>
       </div>
-      <div className='flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-center' style={{background: "linear-gradient(140deg,#ffeee0,#ffe8e4)"}}>
+      <div
+        className='flex flex-col gap-6 lg:gap-0 lg:flex-row items-center justify-center'
+        style={{ background: 'linear-gradient(140deg,#ffeee0,#ffe8e4)' }}
+      >
         <div className='mx-2'>
-          <MapInfo
-            clickedCountries={clickedCountries}
-          />
+          <MapInfo clickedCountries={clickedCountries} />
         </div>
         <WorldMap
           setHoveredCountry={setHoveredCountry}
