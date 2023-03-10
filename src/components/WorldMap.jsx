@@ -6,6 +6,7 @@ const WorldMap = ({
   clickedCountries,
   setClickedCountries,
   handleCountryClick,
+  
 }) => {
   const [isSmallScreen, setIsSmallScreen] = useState(false);
 

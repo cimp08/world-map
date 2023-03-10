@@ -1,5 +1,5 @@
 const countryData = {
-  Sweden: {
+  'Sweden': {
     members: 14,
     merchants: 5500,
     sales: 300,
@@ -23,7 +23,7 @@ const countryData = {
     savings: 500,
     flag: '/assets/flags/usa.png',
   },
-  Germany: {
+  'Germany': {
     members: 12,
     merchants: 5000,
     sales: 250,
@@ -31,7 +31,7 @@ const countryData = {
     savings: 250,
     flag: '/assets/flags/germany.png',
   },
-  Italy: {
+  'Italy': {
     members: 8,
     merchants: 3000,
     sales: 150,
@@ -39,7 +39,7 @@ const countryData = {
     savings: 150,
     flag: '/assets/flags/italy.png',
   },
-  China: {
+  'China': {
     members: 30,
     merchants: 10000,
     sales: 1000,
@@ -47,7 +47,7 @@ const countryData = {
     savings: 1000,
     flag: '/assets/flags/china.png',
   },
-  France: {
+  'France': {
     members: 24,
     merchants: 6000,
     sales: 3000,
@@ -55,7 +55,7 @@ const countryData = {
     savings: 2000,
     flag: '/assets/flags/france.png',
   },
-  Australia: {
+  'Australia': {
     members: 10,
     merchants: 3000,
     sales: 2000,
@@ -91,9 +91,8 @@ const MapInfo = ({ clickedCountries, handleCountryClick }) => {
   return (
     <div className='w-full lg:w-[500px] order-last lg:order-first'>
       <div className='text-center mb-12'>
-        {clickedCountries.length > 0 ? (
           <div>
-            {clickedCountries.map((country) => (
+            {/* {clickedCountries.map((country) => (
               <img
                 key={country}
                 src={countryData[country].flag}
@@ -104,13 +103,23 @@ const MapInfo = ({ clickedCountries, handleCountryClick }) => {
                   handleCountryClick(country);
                 }}
               />
-            ))}
+            ))} */}
+            {Object.keys(countryData).map((country) => {
+              const flagUrl = countryData[country].flag;
+              return (
+                <img
+                  key={country}
+                  src={flagUrl}
+                  alt={`${country} flag`}
+                  className={`inline-block w-10 h-10 mx-1 cursor-pointer ${clickedCountries.includes(country) ? 'opacity-100' : 'opacity-25'}`}
+                  onClick={() => {
+                    console.log(country);
+                    handleCountryClick(country);
+                  }}
+                />
+              );
+            })}
           </div>
-        ) : (
-          <h3 className='text-center text-[#DA557C] text-4xl md:text-[48px] font-[700]'>
-            Choose Country
-          </h3>
-        )}
       </div>
       <div className='grid gap-4 grid-cols-3 md:grid-cols-2 gap-y-6 md:gap-y-8 items-start'>
         <div className='flex flex-col justify-center items-center'>

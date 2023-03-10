@@ -15,6 +15,7 @@ const Map = () => {
     'Australia'
   ]);
 
+
   const handleCountryClick = (geo) => {
     const countryName = geo?.properties?.name ? geo.properties.name : geo;
     if (clickedCountries.includes(countryName)) {
