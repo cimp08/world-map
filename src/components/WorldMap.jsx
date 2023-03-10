@@ -68,9 +68,9 @@ const WorldMap = ({
                   style={{
                     default: {
                       fill: clickedCountries.includes(geo.properties.name)
-                        ? '#5934eb' // Dark blue if country is clicked
+                        ? '#fd438e' // Dark blue if country is clicked
                         : isCountrySelected
-                        ? '#3498eb' // Blue if country is in selectedCountries array
+                        ? '#ffaf60' // Blue if country is in selectedCountries array
                         : '#ccc', // Gray for all other countries
                       outline: 'none',
                     },
@@ -78,18 +78,18 @@ const WorldMap = ({
                       fill:
                         isCountrySelected && !isSmallScreen // Disable hover effect on small screens
                           ? clickedCountries.includes(geo.properties.name)
-                            ? '#5934eb' // Dark blue if country is clicked
-                            : '#ebae34' // Yellow if country is in selectedCountries array but not clicked
+                            ? '#fd438e' // Dark blue if country is clicked
+                            : '#fad1a7' // Yellow if country is in selectedCountries array but not clicked (HOVER)
                           : isCountrySelected
                           ? clickedCountries.includes(geo.properties.name)
-                            ? '#5934eb'
-                            : '#3498eb'
+                            ? '#fd438e'
+                            : '#ffaf60'
                           : '#ccc', // Gray for all other countries
                       cursor: isCountrySelected ? 'pointer' : 'default',
                       outline: 'none',
                     },
                     pressed: {
-                      fill: isCountrySelected ? '#5934eb' : '#ccc',
+                      fill: isCountrySelected ? '#fd438e' : '#ccc',
                       outline: 'none',
                     },
                   }}

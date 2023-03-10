@@ -7,7 +7,7 @@ const Map = () => {
   const [clickedCountries, setClickedCountries] = useState(['Sweden']);
   return (
     <>
-      <div className='bg-blue-400'>
+      <div className='bg-blue-400' style={{background: "linear-gradient(130deg,#fd438e,#ffaf60 93%,#ffaf60)"}}>
         <div className='container mx-auto'>
           <h2 className='text-2xl md:text-4xl text-white py-6 mx-5'>
             Refunder in Numbers
