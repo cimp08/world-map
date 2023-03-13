@@ -1,5 +1,5 @@
 const countryData = {
-  'Sweden': {
+  Sweden: {
     members: 14,
     merchants: 5500,
     sales: 300,
@@ -23,7 +23,7 @@ const countryData = {
     savings: 500,
     flag: '/assets/flags/usa.png',
   },
-  'Germany': {
+  Germany: {
     members: 12,
     merchants: 5000,
     sales: 250,
@@ -31,7 +31,7 @@ const countryData = {
     savings: 250,
     flag: '/assets/flags/germany.png',
   },
-  'Italy': {
+  Italy: {
     members: 8,
     merchants: 3000,
     sales: 150,
@@ -39,7 +39,7 @@ const countryData = {
     savings: 150,
     flag: '/assets/flags/italy.png',
   },
-  'China': {
+  China: {
     members: 30,
     merchants: 10000,
     sales: 1000,
@@ -47,7 +47,7 @@ const countryData = {
     savings: 1000,
     flag: '/assets/flags/china.png',
   },
-  'France': {
+  France: {
     members: 24,
     merchants: 6000,
     sales: 3000,
@@ -55,13 +55,21 @@ const countryData = {
     savings: 2000,
     flag: '/assets/flags/france.png',
   },
-  'Australia': {
+  Australia: {
     members: 10,
     merchants: 3000,
     sales: 2000,
     transactions: 1500,
     savings: 1500,
     flag: '/assets/flags/australia.png',
+  },
+  Poland: {
+    members: 8,
+    merchants: 1500,
+    sales: 1000,
+    transactions: 1000,
+    savings: 1000,
+    flag: '/assets/flags/poland.png',
   },
 };
 
@@ -199,7 +207,7 @@ const MapInfo = ({ clickedCountries, handleCountryClick }) => {
             alt='people'
             className='w-[35px] md:w-[50px] md:h-[40px] mb-3'
           />
-          <p className='text-base text-gray-700 font-bold md:text-lg'>8</p>
+          <p className='text-base text-gray-700 font-bold md:text-lg'>9</p>
           <p className='text-gray-700 text-sm md:text-base text-center'>
             TopCashback countries
           </p>

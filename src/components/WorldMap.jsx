@@ -20,6 +20,7 @@ const WorldMap = ({
     'China',
     'United Kingdom',
     'Australia',
+    'Poland'
   ];
 
 
